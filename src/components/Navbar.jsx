@@ -42,13 +42,14 @@ function Navbar() {
       {/*  FULLSCREEN MENU */}
       <div
         className={`fixed inset-0 z-40 flex flex-col overflow-y-auto
-        bg-[url('https://res.cloudinary.com/dgfp5n7bn/image/upload/v1780226402/bgv_pzlgkp.svg')]
-        backdrop-blur-xl text-white transition-all duration-500
-        ${
-          menuOpen
-            ? "opacity-100 pointer-events-auto scale-100"
-            : "opacity-0 pointer-events-none scale-105"
-        }`}
+    bg-[url('https://res.cloudinary.com/dgfp5n7bn/image/upload/v1780226402/bgv_pzlgkp.svg')]
+    bg-no-repeat bg-cover bg-center
+    backdrop-blur-xl text-white transition-all duration-500
+    ${
+      menuOpen
+        ? "opacity-100 pointer-events-auto scale-100"
+        : "opacity-0 pointer-events-none scale-105"
+    }`}
       >
         {/* NAV LINKS */}
         <div className="px-6 md:px-16 pt-32 pb-10">
@@ -74,12 +75,6 @@ function Navbar() {
 
         {/* ───────── FOOTER ───────── */}
         <div className="relative mt-auto overflow-hidden">
-          <img
-            src="https://res.cloudinary.com/dgfp5n7bn/image/upload/v1780226402/bgv_pzlgkp.svg"
-            alt="background"
-            className="absolute inset-0 w-full h-full object-cover opacity-20"
-          />
-
           <div className="relative z-10 px-6 md:px-16 py-12 text-[#a79a7c]">
             {/* 4 COLUMN LAYOUT */}
             <div className="grid grid-cols-1 md:grid-cols-4 gap-8 text-sm md:text-base">

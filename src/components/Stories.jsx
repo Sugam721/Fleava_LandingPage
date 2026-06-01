@@ -6,6 +6,7 @@ function Stories() {
       category: "Insight - Marketing",
       title: "Human—centric Brand & Marketing",
       img: "https://images.prismic.io/fleava/4b5693d3-a5f5-478f-97df-124696bb0449_human-centric-brand-marketing.webp?auto=compress,format",
+      bg: "#1E2A2E",
       description: (
         <>
           Building an emotional connection <br />
@@ -19,6 +20,7 @@ function Stories() {
       category: "Insight - Technology",
       title: "Discover how No-Code Development changing the future of tech",
       img: "https://images.prismic.io/fleava/6d65cded-3176-48b4-811e-b872fce428c4_no-code-future-of-tech.jpg?auto=compress,format",
+      bg: "#121212",
       description: (
         <>
           No-code platforms will be familiar <br />
@@ -34,6 +36,7 @@ function Stories() {
       category: "News & Stories",
       title: "Fleava is nominated as the 2020 Agency of the Year on Awwwards",
       img: "https://images.prismic.io/fleava/e6312755-7a8d-4ad4-b903-1f1cfc5c1eec_agency-of-the-year-2020.webp?auto=compress,format",
+      bg: "#0B1B2B",
       description: (
         <>
           Awwwards recognizes the talent <br />
@@ -56,7 +59,6 @@ function Stories() {
   const rafId = useRef(null);
   const active = useRef(false);
 
-  // ✅ FIX: relative mouse position inside section
   const onMouseMove = useCallback((e) => {
     const rect = sectionRef.current?.getBoundingClientRect();
     if (!rect) return;
@@ -127,7 +129,10 @@ function Stories() {
   return (
     <section
       ref={sectionRef}
-      className="relative bg-black text-[#dfdeca] py-24 overflow-hidden"
+      className="relative text-[#dfdeca] py-24 overflow-hidden transition-colors duration-500"
+      style={{
+        backgroundColor: hoveredStory?.bg || "#000",
+      }}
       onMouseMove={onMouseMove}
     >
       {/* Floating Preview (NOW INSIDE SECTION) */}
@@ -145,6 +150,7 @@ function Stories() {
       >
         {hoveredStory && (
           <img
+            key={hoveredStory.img}
             src={hoveredStory.img}
             alt={hoveredStory.title}
             className="w-full h-full object-cover"

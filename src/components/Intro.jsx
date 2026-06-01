@@ -26,7 +26,7 @@ const Intro = ({ scrollY = 0 }) => {
 
       <img
         src="https://res.cloudinary.com/dgfp5n7bn/image/upload/v1780216024/ornament_msrbzj.svg"
-        className="h-24 px-12 mb-12 self-start lg:self-end lg:mr-40"
+        className="h-34 px-12 mb-12 self-start lg:self-end lg:mr-90 lg:mb-24"
         style={{
           transform: `rotate(${rotation}deg)`,
           transition: "transform 0.1s linear",

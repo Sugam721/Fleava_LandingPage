@@ -81,25 +81,18 @@ function App() {
           </div>
 
           <div className="animate-section">
-            <Agency />
+            <Agency scrollY={scrollY} />
           </div>
 
           <div className="animate-section">
             <Expertise />
           </div>
 
-          <div className="bg-[#AAAAAA] text-black">
-            <div className="animate-section">
+          <div className="animate-section">
+            <div className="bg-[#AAAAAA] text-black">
               <Industry />
             </div>
-          </div>
-
-          {/* <div className="animate-section">
-            <Img />
-          </div> */}
-
-          <div className="bg-black text-white">
-            <div className="animate-section">
+            <div className=" bg-black text-white">
               <Img />
               <Stories />
             </div>

@@ -1,69 +1,132 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
 function Agency() {
-  useEffect(() => {
-    // IMAGE ANIMATION
-    gsap.fromTo(
-      ".agency-img",
-      {
-        filter: "brightness(0.8) ",
-        scale: 1.05,
-      },
-      {
-        filter: "brightness(2.4) ",
-        scale: 1,
-        scrollTrigger: {
-          trigger: ".agency-text",
-          start: "top 40%",
-          end: "bottom 20%",
-          scrub: true,
-        },
-      },
-    );
+  const sectionRef = useRef(null);
+  const imgRef = useRef(null);
+  const overlayRef = useRef(null);
+  const contentRef = useRef(null);
 
-    // OVERLAY ANIMATION (separate)
-    gsap.fromTo(
-      ".overlay",
-      { opacity: 0.7 },
-      {
-        opacity: 0.2,
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        sectionRef.current,
+        {
+          scale: gsap.getProperty(sectionRef.current, "scale"),
+        },
+        {
+          scale: 1.05,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top center",
+            toggleActions: "play none none reverse",
+
+            scrub: 1,
+          },
+        },
+      );
+
+      gsap.fromTo(
+        imgRef.current,
+        {
+          yPercent: 20,
+          scale: 1.1,
+        },
+        {
+          yPercent: -20,
+          scale: 1,
+          opacity: 0,
+          ease: "none",
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top center",
+            end: "bottom center",
+            scrub: true,
+          },
+        },
+      );
+
+      gsap.to(overlayRef.current, {
+        opacity: 0.15,
+        ease: "none",
         scrollTrigger: {
-          trigger: ".agency-text",
-          start: "top 40%",
-          end: "bottom 20%",
+          trigger: sectionRef.current,
+          start: "top center",
+          end: "bottom center",
           scrub: true,
         },
-      },
-    );
+      });
+
+      gsap.fromTo(
+        contentRef.current,
+        {
+          y: 80,
+          opacity: 0,
+          scale: 0.85,
+        },
+        {
+          y: 0,
+          opacity: 1,
+          scale: 1,
+          duration: 1.2,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top 70%",
+            toggleActions: "play none none reverse",
+          },
+        },
+      );
+    }, sectionRef);
+
+    return () => ctx.revert();
   }, []);
 
   return (
-    <div className="relative w-full min-h-screen bg-black overflow-hidden ">
-      <img
-        src="https://res.cloudinary.com/dgfp5n7bn/image/upload/v1780216022/about_zc10es.webp"
-        alt="Agency"
-        className="absolute inset-0 h-full w-full object-cover agency-img"
-      />
-
-      <div className="absolute inset-0 overlay" />
-
-      <div className="relative z-10 px-12 md:px-55 py-32  flex flex-col justify-center min-h-screen text-[#FFDCA8] agency-text translate-x-4">
-        <p className="text-sm uppercase opacity-70 ">/ The Agency</p>
-
-        <h2 className="text-4xl md:text-7xl font-normal mt-6 leading-tight">
-          We Provoke <br />
-          what's Possible.
-        </h2>
-
-        <p className="mt-6 text-lg md:text-xl opacity-95 max-w-3xl">
-          We're an award-winning strategic digital innovation agency.
-        </p>
+    <section
+      ref={sectionRef}
+      className="relative scale-90 h-screen overflow-hidden bg-black"
+    >
+      <div
+        ref={imgRef}
+        className="absolute inset-0 h-full w-full overflow-hidden"
+      >
+        <img
+          src="https://res.cloudinary.com/dgfp5n7bn/image/upload/v1780216022/about_zc10es.webp"
+          alt="Agency"
+          className=" w-full h-full object-cover"
+        />
       </div>
-    </div>
+
+      {/* OVERLAY */}
+      <div ref={overlayRef} className="absolute inset-0 bg-black opacity-60" />
+
+      {/* CONTENT */}
+      <div
+        ref={contentRef}
+        className="agency-content relative z-10 flex h-screen items-center"
+      >
+        <div className="px-10 text-[#FFDCA8] md:px-24 lg:px-56">
+          <p className="text-sm uppercase tracking-widest opacity-80">
+            / The Agency
+          </p>
+
+          <h1 className="mt-6 text-4xl font-light leading-none md:text-7xl lg:text-8xl">
+            We Provoke
+            <br />
+            What's Possible.
+          </h1>
+
+          <p className="mt-8 max-w-2xl text-lg opacity-90 md:text-xl">
+            We're an award-winning strategic digital innovation agency.
+          </p>
+        </div>
+      </div>
+    </section>
   );
 }
 

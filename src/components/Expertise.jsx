@@ -51,7 +51,7 @@ const Expertise = () => {
   return (
     <div className="relative w-full overflow-hidden bg-black text-white">
       {/* Header Section */}
-      <div className="relative z-10 px-6 lg:px-40 py-20">
+      <div className="relative z-10 px-6 lg:px-60 py-20">
         <h1 className="text-lg lg:text-xl mb-6">/ Expertise</h1>
 
         <div className="space-y-2 text-lg lg:text-2xl leading-snug">

@@ -16,7 +16,7 @@ function Navbar() {
 
   return (
     <>
-      {/* ───────── TOP NAV BAR ───────── */}
+      {/* TOP NAV BAR*/}
       <nav className="fixed top-0 left-0 w-full z-99 flex items-center justify-end gap-3 px-4 md:px-10 pt-2 md:pt-9">
         {/* LOGO */}
         <img
@@ -39,7 +39,7 @@ function Navbar() {
         </button>
       </nav>
 
-      {/* ───────── FULLSCREEN MENU ───────── */}
+      {/*  FULLSCREEN MENU */}
       <div
         className={`fixed inset-0 z-40 flex flex-col overflow-y-auto
         bg-[url('https://res.cloudinary.com/dgfp5n7bn/image/upload/v1780226402/bgv_pzlgkp.svg')]

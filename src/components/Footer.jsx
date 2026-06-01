@@ -14,7 +14,6 @@ const Footer = () => {
         {/* Heading */}
         <h1 className="text-5xl md:text-9xl font-large mb-16 group inline-block relative cursor-pointer">
           Let's Talk.
-          {/* underline */}
           <span className="absolute left-0 bottom-0 h-0.75 w-0 bg-[#a79a7c] transition-all duration-500 group-hover:w-full"></span>
         </h1>
 

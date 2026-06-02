@@ -6,7 +6,7 @@ function Navbar() {
 
   const navLinks = [
     { label: "Home", href: "#" },
-    { label: "Work", href: "#" },
+    { label: "Works", href: "#" },
     { label: "Journal", href: "#" },
     { label: "Expertise", href: "#" },
     { label: "About", href: "#" },
@@ -52,14 +52,14 @@ function Navbar() {
     }`}
       >
         {/* NAV LINKS */}
-        <div className="px-6 md:px-16 pt-32 pb-10">
-          <ul className="flex flex-row gap-6 flex-wrap">
+        <div className="px-32 md:px-32 pt-65 pb-10">
+          <ul className="grid grid-cols-3 gap-6  items-center">
             {navLinks.map((link, i) => (
               <li key={link.label}>
                 <a
                   href={link.href}
                   onClick={() => setMenuOpen(false)}
-                  className="text-4xl md:text-[3vw] text-[#ccc7bc] font-normal leading-none tracking-tight block transition-all duration-500"
+                  className="text-7xl md:text-[6vw] text-[#ccc7bc] font-light leading-none tracking-tight block transition-all duration-500"
                   style={{
                     transitionDelay: menuOpen ? `${i * 80}ms` : "0ms",
                     transform: menuOpen ? "translateY(0)" : "translateY(40px)",

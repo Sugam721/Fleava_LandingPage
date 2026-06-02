@@ -35,11 +35,13 @@ function Agency() {
         {
           yPercent: 20,
           scale: 1.1,
+          filter: "brightness(2) ",
         },
         {
           yPercent: -20,
           scale: 1,
           opacity: 0,
+          filter: "brightness(8) ",
           ease: "none",
           scrollTrigger: {
             trigger: sectionRef.current,
